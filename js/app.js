@@ -30,8 +30,9 @@ var App = Backbone.Router.extend({
       this.nav.hideSpinner();
     });
 
-    this.listenTo(this.nav, "link:click", function(name){
-      switch(name) {
+    this.listenTo(this.nav, "link:click", function(options){
+      console.log("options", options);
+      switch(options.name) {
         case "products":
           this.showProducts();
         break;
@@ -42,6 +43,7 @@ var App = Backbone.Router.extend({
           this.showHome();
         break;
       }
+      this.navigate(options.href);
     });
 
     // default to showing home
